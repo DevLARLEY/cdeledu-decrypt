@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
     // ----------------- key ----------------- //
 
     const uint8_t* key = (const uint8_t*)argv[2];
-    const uint32_t key_length = sizeof(key);
+    const uint32_t key_length = strlen(argv[2]);
     const uint32_t key_buffer = w2c_runtime_create_buff(&runtime, key_length);
 
     for (uint32_t i = 0; i < key_length; i++) {
