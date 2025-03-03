@@ -2,35 +2,6 @@
 
 #include "runtime.h"
 
-uint32_t readFileIntoWasmBuffer(w2c_runtime* runtime, const char* filePath) {
-    FILE* file = fopen(filePath, "rb");
-    if (!file) {
-        return 0;
-    }
-
-    fseek(file, 0, SEEK_END);
-    const uint32_t fileSize = ftell(file);
-    fseek(file, 0, SEEK_SET);
-
-    const uint32_t bufferPtr = w2c_runtime_create_buff(runtime, fileSize);
-    if (bufferPtr == 0) {
-        fclose(file);
-        return 0;
-    }
-
-    const wasm_rt_memory_t* memory = w2c_runtime_memory(runtime);
-
-    const size_t bytesRead = fread(&memory->data[bufferPtr], 1, fileSize, file);
-    fclose(file);
-
-    if (bytesRead != fileSize) {
-        w2c_runtime_free_buff(runtime, bufferPtr);
-        return 0;
-    }
-
-    return bufferPtr;
-}
-
 int main(int argc, char** argv) {
     printf("cdeledu.com WASM decrypt by github.com/DevLARLEY\n");
 
@@ -50,7 +21,9 @@ int main(int argc, char** argv) {
 
     // ----------------- data ----------------- //
 
-    FILE* data_file = fopen(argv[1], "rb");
+    FILE *data_file;
+    fopen_s(&data_file, argv[1], "rb");
+
     if (!data_file) {
         printf("unable to open input file\n");
         return 0;
@@ -126,7 +99,9 @@ int main(int argc, char** argv) {
 
     printf("writing: %s\n", argv[3]);
 
-    FILE* out_file = fopen(argv[3], "wb");
+    FILE *out_file;
+    fopen_s(&out_file, argv[3], "wb");
+
     if (!out_file) {
         printf("unable to open output file\n");
         return 0;
