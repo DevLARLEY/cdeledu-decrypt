@@ -17,29 +17,29 @@ class Program : Constants
         var g = h2;
         var j = h3;
 
-        int i, o, q;
+        int l, p, q;
 
-        i = (g ^ j >>> 4) & 0x0F0F0F0F;
-        j = i << 4 ^ j;
-        g = g ^ i;
-        i = (j & 0x0000FFFF) ^ g >>> 16;
+        l = (g ^ j >>> 4) & 0x0F0F0F0F;
+        j = l << 4 ^ j;
+        g = g ^ l;
+        l = (j & 0x0000FFFF) ^ g >>> 16;
 
-        j = i ^ j;
-        g = i << 16 ^ g;
-        i = (j >>> 2 ^ g) & 0x33333333;
+        j = l ^ j;
+        g = l << 16 ^ g;
+        l = (j >>> 2 ^ g) & 0x33333333;
 
-        g = i ^ g;
-        j = i << 2 ^ j;
-        i = (g >>> 8 ^ j) & 0x00FF00FF;
+        g = l ^ g;
+        j = l << 2 ^ j;
+        l = (g >>> 8 ^ j) & 0x00FF00FF;
 
-        o = i ^ j;
-        g = i << 8 ^ g;
-        q = (o >>> 1 ^ g) & 0x55555555;
+        p = l ^ j;
+        g = l << 8 ^ g;
+        q = (p >>> 1 ^ g) & 0x55555555;
 
-        i = (q ^ g).Rotl(3);
-        g = (i ^ K.Load(38 * 4)).Rotl(28);
+        l = (q ^ g).Rotl(3);
+        g = (l ^ I.Load(54 * 4)).Rotl(28);
 
-        j = K.Load(37 * 4) ^ i;
+        j = I.Load(53 * 4) ^ l;
         j = M.Load(j & 252) ^
             M.Load((j >>> 8 & 252) + 512) ^
             M.Load((j >>> 16 & 252) + 1024) ^
@@ -48,199 +48,199 @@ class Program : Constants
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
             M.Load((g >>> 24 & 252) + 1792) ^
-            (q << 1 ^ o).Rotl(3);
+            (q << 1 ^ p).Rotl(3);
 
-        g = j ^ K.Load(35 * 4);
+        g = j ^ I.Load(51 * 4);
 
-        i = M.Load(g & 252) ^
+        l = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (j ^ K.Load(36 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (j ^ I.Load(52 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
-            M.Load((g >>> 24 & 252) + 1792) ^ i;
+            M.Load((g >>> 24 & 252) + 1792) ^ l;
 
-        g = i ^ K.Load(33 * 4);
+        g = l ^ I.Load(49 * 4);
         
         j = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (i ^ K.Load(34 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (l ^ I.Load(50 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
             M.Load((g >>> 24 & 252) + 1792) ^ j;
 
-        g = j ^ K.Load(31 * 4);
+        g = j ^ I.Load(47 * 4);
         
-        i = M.Load(g & 252) ^
+        l = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (j ^ K.Load(32 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (j ^ I.Load(48 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
-            M.Load((g >>> 24 & 252) + 1792) ^ i;
+            M.Load((g >>> 24 & 252) + 1792) ^ l;
         
-        g = i ^ K.Load(29 * 4);
+        g = l ^ I.Load(45 * 4);
         
         j = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (i ^ K.Load(30 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (l ^ I.Load(46 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
             M.Load((g >>> 24 & 252) + 1792) ^ j;
         
-        g = j ^ K.Load(27 * 4);
+        g = j ^ I.Load(43 * 4);
         
-        i = M.Load(g & 252) ^
+        l = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (j ^ K.Load(28 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (j ^ I.Load(44 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
-            M.Load((g >>> 24 & 252) + 1792) ^ i;
+            M.Load((g >>> 24 & 252) + 1792) ^ l;
         
-        g = i ^ K.Load(25 * 4);
+        g = l ^ I.Load(41 * 4);
         
         j = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (i ^ K.Load(26 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (l ^ I.Load(42 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
             M.Load((g >>> 24 & 252) + 1792) ^ j;
         
-        g = j ^ K.Load(23 * 4);
+        g = j ^ I.Load(39 * 4);
         
-        i = M.Load(g & 252) ^
+        l = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (j ^ K.Load(24 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (j ^ I.Load(40 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
-            M.Load((g >>> 24 & 252) + 1792) ^ i;
+            M.Load((g >>> 24 & 252) + 1792) ^ l;
         
-        g = i ^ K.Load(21 * 4);
+        g = l ^ I.Load(37 * 4);
         
         j = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (i ^ K.Load(22 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (l ^ I.Load(38 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
             M.Load((g >>> 24 & 252) + 1792) ^ j;
         
-        g = j ^ K.Load(19 * 4);
+        g = j ^ I.Load(35 * 4);
         
-        i = M.Load(g & 252) ^
+        l = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (j ^ K.Load(20 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (j ^ I.Load(36 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
-            M.Load((g >>> 24 & 252) + 1792) ^ i;
+            M.Load((g >>> 24 & 252) + 1792) ^ l;
         
-        g = i ^ K.Load(17 * 4);
+        g = l ^ I.Load(33 * 4);
         
         j = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (i ^ K.Load(18 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (l ^ I.Load(34 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
             M.Load((g >>> 24 & 252) + 1792) ^ j;
         
-        g = j ^ K.Load(15 * 4);
+        g = j ^ I.Load(31 * 4);
         
-        i = M.Load(g & 252) ^
+        l = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (j ^ K.Load(16 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (j ^ I.Load(32 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
-            M.Load((g >>> 24 & 252) + 1792) ^ i;
+            M.Load((g >>> 24 & 252) + 1792) ^ l;
         
-        g = i ^ K.Load(13 * 4);
+        g = l ^ I.Load(29 * 4);
         
         j = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (i ^ K.Load(14 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (l ^ I.Load(30 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
             M.Load((g >>> 24 & 252) + 1792) ^ j;
         
-        g = j ^ K.Load(11 * 4);
+        g = j ^ I.Load(27 * 4);
         
-        i = M.Load(g & 252) ^
+        l = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (j ^ K.Load(12 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (j ^ I.Load(28 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
-            M.Load((g >>> 24 & 252) + 1792) ^ i;
+            M.Load((g >>> 24 & 252) + 1792) ^ l;
         
-        g = i ^ K.Load(9 * 4);
+        g = l ^ I.Load(25 * 4);
         
         j = M.Load(g & 252) ^
             M.Load((g >>> 8 & 252) + 512) ^
             M.Load((g >>> 16 & 252) + 1024) ^
             M.Load((g >>> 24 & 252) + 1536) ^ 
-            M.Load(((g = (i ^ K.Load(10 * 4)).Rotl(28)) & 252) + 256) ^
+            M.Load(((g = (l ^ I.Load(26 * 4)).Rotl(28)) & 252) + 256) ^
             M.Load((g >>> 8 & 252) + 768) ^
             M.Load((g >>> 16 & 252) + 1280) ^
             M.Load((g >>> 24 & 252) + 1792) ^ j;
         
-        g = j ^ K.Load(7 * 4);
+        g = j ^ I.Load(23 * 4);
 
-        o = j.Rotl(29);
+        p = j.Rotl(29);
 
-        g = (M.Load(((j = (j ^ K.Load(8 * 4)).Rotl(28)) >>> 24 & 252) + 1792) ^
+        g = (M.Load(((j = (j ^ I.Load(24 * 4)).Rotl(28)) >>> 24 & 252) + 1792) ^
              M.Load((j >>> 16 & 252) + 1280) ^
              M.Load((j >>> 8 & 252) + 768) ^
              M.Load((j & 252) + 256) ^
              M.Load((g >>> 24 & 252) + 1536) ^
              M.Load((g >>> 16 & 252) + 1024) ^
              M.Load((g >>> 8 & 252) + 512) ^
-             M.Load(g & 252) ^ i).Rotl(29);
+             M.Load(g & 252) ^ l).Rotl(29);
         
-        j = (o ^ g >>> 1) & 0x55555555;
-        i = j ^ o;
+        j = (p ^ g >>> 1) & 0x55555555;
+        l = j ^ p;
         g = j << 1 ^ g;
 
-        j = (i >>> 8 ^ g) & 0x00FF00FF;
+        j = (l >>> 8 ^ g) & 0x00FF00FF;
         g = j ^ g;
-        j = j << 8 ^ i;
+        j = j << 8 ^ l;
         
-        i = (g >>> 2 ^ j) & 0x33333333;
-        g = i << 2 ^ g;
-        j = i ^ j;
+        l = (g >>> 2 ^ j) & 0x33333333;
+        g = l << 2 ^ g;
+        j = l ^ j;
         
-        i = (g & 65535) ^ j >>> 16;
-        g = i ^ g;
-        j = i << 16 ^ j;
+        l = (g & 65535) ^ j >>> 16;
+        g = l ^ g;
+        j = l << 16 ^ j;
         
-        i = (g >>> 4 ^ j) & 0x0F0F0F0F;
-        h2 = i ^ j;
-        h3 = i << 4 ^ g;
+        l = (g >>> 4 ^ j) & 0x0F0F0F0F;
+        h2 = l ^ j;
+        h3 = l << 4 ^ g;
 
         return [..BitConverter.GetBytes(h2), ..BitConverter.GetBytes(h3)];
     }
 
-    private static (byte[] Key, byte[] Iv) Decrypt(byte[] ciphertext)
+    private static byte[] Decrypt(byte[] ciphertext)
     {
         if (ciphertext.Length % 8 != 0)
             throw new ArgumentException("Ciphertext must be a multiple of 8 bytes long");
@@ -267,18 +267,18 @@ class Program : Constants
 
         var keyString = plaintext.Decode();
 
-        return (Convert.FromBase64String(keyString[..24]), Convert.FromBase64String(keyString[24..]));
+        return Convert.FromBase64String(keyString[..24]);
     }
 
     private static string ModifyRawKey(string rawKey)
     {
-        var key = rawKey[16..^8];
+        var key = rawKey[8..^16];
         return key.Replace("-", "/").Replace(".", "+").Replace("_", "=");
     }
     
     static void Main(string[] args)
     {
-        Console.WriteLine("CdelEdu Key Decrypter by github.com/DevLARLEY");
+        Console.WriteLine("CdelEdu Key Decrypter by github.com/DevLARLEY (JS v3.6/drm4pc v4)");
         if (args.Length < 1)
         {
             Console.WriteLine("Usage: CdelEduDecrypt.exe [key]");
@@ -289,6 +289,6 @@ class Program : Constants
         var encryptedKey = Convert.FromBase64String(modifiedKey);
         var decrypted = Decrypt(encryptedKey);
         
-        Console.WriteLine($"Key: {decrypted.Key.ToHex()} IV: {decrypted.Iv.ToHex()}");
+        Console.WriteLine($"Key: {decrypted.ToHex()}");
     }
 }
